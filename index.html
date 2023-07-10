@@ -12,9 +12,12 @@
         }
 
         .pigeon-container {
+            position: relative;
+            /* width: 200px;
+            height: 200px;
+            --size: 200px; */
             width: 50vh;
             height: 50vh;
-            position: relative;
             --size: 50vh;
             /* border: 1px solid grey */
         }
@@ -206,19 +209,27 @@
         @keyframes blink {
 
             0%,
-            90%,
+            20%,
+            27%,
+            30%,
+            35%,
+            62%,
+            65%,
+            68%,
+            71%,
             100% {
                 transform: scaleY(1);
             }
 
-            95% {
+            25%,
+            63%,
+            70% {
                 transform: scaleY(0);
             }
         }
 
-
         .eye {
-            animation: blink 3s infinite;
+            animation: blink 8s infinite;
             transform-origin: center;
         }
 
@@ -260,11 +271,13 @@
             }
 
             25% {
-                transform: rotate(10deg) translate(4px, -5px);
+                /* transform: rotate(10deg) translate(4px, -5px); */
+                transform: rotate(10deg) translate(calc(var(--size) * 0.015), calc(var(--size) * -0.02));
             }
 
             75% {
-                transform: rotate(-15deg) translate(10px, -10px);
+                /* transform: rotate(-15deg) translate(10px, -10px); */
+                transform: rotate(-15deg) translate(calc(var(--size) * 0.05), calc(var(--size) * -0.05));
             }
         }
 
@@ -277,11 +290,12 @@
             }
 
             25% {
-                transform: rotate(-10deg) translate(-4px, -5px);
+                transform: rotate(-10deg) translate(calc(var(--size) * -0.015), calc(var(--size) * -0.025));
             }
 
             75% {
-                transform: rotate(15deg) translate(-10px, -10px);
+                /* transform: rotate(15deg) translate(-10px, -10px); */
+                transform: rotate(15deg) translate(calc(var(--size) * -0.045), calc(var(--size) * -0.05));
             }
         }
 
