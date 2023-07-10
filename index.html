@@ -311,19 +311,6 @@
             animation-delay: 0.1s;
         }
 
-        /* define stomping animation for each foot */
-        @keyframes left-foot-stomp {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(10px);
-            }
-        }
-
         @keyframes right-foot-stomp {
 
             0%,
@@ -335,7 +322,7 @@
 
             10% {
                 /* At 10% of the animation time, the foot will move down */
-                transform: translateY(-5px) rotate(-5deg);
+                transform: translateY(calc(var(--size) * -0.05)) rotate(-5deg);
             }
         }
 
@@ -350,7 +337,7 @@
 
             10% {
                 /* At 10% of the animation time, the foot will move down */
-                transform: translateY(-5px) rotate(5deg);
+                transform: translateY(calc(var(--size) * -0.05)) rotate(5deg);
             }
         }
 
