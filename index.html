@@ -10,7 +10,7 @@
             height: 100vh;
             background-color: #f5f5f5;
         }
-        
+
         .pigeon-container {
             width: 50vh;
             height: 50vh;
@@ -19,7 +19,7 @@
             /* border: 1px solid grey */
         }
 
-        .pigeon {
+        .body {
             position: relative;
             width: calc(var(--size) * 0.45);
             height: calc(var(--size) * 0.5);
@@ -29,8 +29,8 @@
             transform: scale(1.5) translate(+40.0%, +25%);
         }
 
-        .pigeon::before,
-        .pigeon::after {
+        .body::before,
+        .body::after {
             content: "";
             position: absolute;
             width: calc(var(--size) * 0.10);
@@ -46,7 +46,7 @@
         }
 
         /* Left Wing */
-        .pigeon::before {
+        .body::before {
             left: calc(var(--size) * -0.06);
             /* -40px/400px */
             transform: rotate(-20deg);
@@ -54,7 +54,7 @@
         }
 
         /* Right Wing */
-        .pigeon::after {
+        .body::after {
             right: calc(var(--size) * -0.06);
             /* -40px/400px */
             transform: rotate(20deg);
@@ -92,7 +92,7 @@
             height: calc(var(--size) * 0.03);
             /* 12px/400px */
             /* background: #000; */
-            background: #F2561D;
+            background: #F229BD;
             border-radius: 50%;
             top: calc(var(--size) * 0.0225);
             /* 9px/400px */
@@ -161,13 +161,23 @@
             /* 10px/400px */
             height: calc(var(--size) * 0.025);
             /* 10px/400px */
-            background: #ff0000;
+            background: #F2561D;
             border-radius: 50%;
             top: calc(var(--size) * 0.025);
             /* 10px/400px */
             left: calc(var(--size) * 0.0325);
             /* 13px/400px */
             z-index: 3;
+        }
+
+        /* New .legs div */
+        .legs {
+            position: relative;
+            width: 50%;
+            height: calc(var(--size) * 0.5);
+            /* you may adjust this to match your pigeon's legs */
+            transform: translate(calc(var(--size) * 0.25), -25%);
+            /* adjust this to align the legs with the body */
         }
 
         .foot {
@@ -178,7 +188,7 @@
             /* 40px/400px */
             height: calc(var(--size) * 0.025);
             /* 10px/400px */
-            background: #ffcc00;
+            background: #F28627;
         }
 
         .foot.left {
@@ -244,36 +254,46 @@
         @keyframes right-wing-flap {
 
             0%,
+            50%,
             100% {
                 transform: rotate(20deg) translate(0px, 0px);
             }
 
-            50% {
+            25% {
                 transform: rotate(10deg) translate(4px, -5px);
+            }
+
+            75% {
+                transform: rotate(-15deg) translate(10px, -10px);
             }
         }
 
         @keyframes left-wing-flap {
 
             0%,
+            50%,
             100% {
                 transform: rotate(-20deg) translate(0px, 0px);
             }
 
-            50% {
+            25% {
                 transform: rotate(-10deg) translate(-4px, -5px);
+            }
+
+            75% {
+                transform: rotate(15deg) translate(-10px, -10px);
             }
         }
 
         /* right wing flap */
-        .pigeon::after {
-            animation: right-wing-flap 5s infinite;
+        .body::after {
+            animation: right-wing-flap 10s infinite;
             animation-delay: 0s;
         }
 
         /* left wing flap */
-        .pigeon::before {
-            animation: left-wing-flap 5s infinite;
+        .body::before {
+            animation: left-wing-flap 10s infinite;
             animation-delay: 0.1s;
         }
 
@@ -335,18 +355,66 @@
             animation-delay: 2.5s;
             /* The right foot will start stomping after a delay of 2.5 seconds */
         }
+
+        @keyframes lean {
+
+            0%,
+            100% {
+                transform: scale(1.5) translate(40.0%, 25%) rotate(0deg);
+            }
+
+            20% {
+                transform: scale(1.5) translate(40.0%, 20%) rotate(3deg);
+            }
+
+            30% {
+                transform: scale(1.5) translate(40.0%, 25%) rotate(5deg);
+            }
+
+            40% {
+                transform: scale(1.5) translate(40.0%, 28%) rotate(2deg);
+            }
+
+            50% {
+                transform: scale(1.5) translate(42.0%, 25%) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.5) translate(38%, 25%) rotate(-3deg);
+            }
+
+            60% {
+                transform: scale(1.5) translate(40%, 22%) rotate(-5deg);
+            }
+
+            70% {
+                transform: scale(1.5) translate(43%, 23%) rotate(-2deg);
+            }
+
+            80% {
+                transform: scale(1.5) translate(42%, 25%) rotate(0deg);
+            }
+        }
+
+        .body {
+            animation: lean 13s infinite;
+        }
     </style>
 </head>
 
 <body>
     <div class="pigeon-container">
         <div class="pigeon">
-            <div class="eye left"></div>
-            <div class="eye right"></div>
-            <div class="beak"></div>
-            <div class="foot left"></div>
-            <div class="foot right"></div>
-            <div class="envelope"></div>
+            <div class="body">
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+                <div class="beak"></div>
+                <div class="envelope"></div>
+            </div>
+            <div class="legs">
+                <div class="foot left"></div>
+                <div class="foot right"></div>
+            </div>
         </div>
     </div>
 
